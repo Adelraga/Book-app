@@ -2,6 +2,7 @@ import 'package:bookly/Features/Splash/presentation/views/widgets/SplashViewBody
 import 'package:bookly/Features/home/data/repos/home_repo.dart';
 import 'package:bookly/Features/home/data/repos/home_repo_implment.dart';
 import 'package:bookly/constants.dart';
+import 'package:bookly/core/cubit/cubit/internet_cubit.dart';
 import 'package:bookly/core/utils/App_Router.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +34,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => NewestBooksCubit(getIt.get<HomeRepoImpl>())..fetchNewestBooks(),
+        ),
+        BlocProvider(
+          create: (context) => InternetCubit(),
         ),
       ],
       child: MaterialApp.router(
